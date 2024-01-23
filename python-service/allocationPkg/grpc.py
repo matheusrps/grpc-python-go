@@ -21,8 +21,8 @@ class GrpcServer:
         await self.start()
         await self.server.wait_for_termination()
 
-async def runGrpc(srv, address="[::]:50051"):
-    logging.basicConfig(level=logging.INFO)
 
-    server = GrpcServer(srv, address="[::]:50051")
+async def run_grpc(srv, address="[::]:50051"):
+    logging.basicConfig(level=logging.INFO)
+    server = GrpcServer(srv, address)
     await server.run()

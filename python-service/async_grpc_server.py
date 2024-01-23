@@ -2,7 +2,7 @@ import grpc
 import asyncio
 import logging
 from protos import helloworld_pb2, helloworld_pb2_grpc
-from allocationPkg.grpc import GrpcServer, runGrpc
+from allocationPkg.grpc import GrpcServer, run_grpc
 
 
 class Greeter(helloworld_pb2_grpc.GreeterServicer):
