@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  python-service:
+    build: ./python-service
+    ports:
+      - "50051:50051"
+    networks:
+      - grpc-network
+
+  go-client:
+    build: ./go-client
+    depends_on:
+      - python-service
+    networks:
+      - grpc-network
+
+networks:
+  grpc-network:
+    driver: bridge

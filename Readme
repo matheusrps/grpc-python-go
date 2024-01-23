@@ -1,0 +1,13 @@
+# O que é esse repositorio
+Esse repositório é a uma simples prova de conceito de como implementar um servidor grpc em Python utilizando asyncio.
+A lógica para subir o grpc server está isolada da regras de negócio em si, contida dentro do /allocationPkg/grpc.py.
+Assim, no serviço, o servidor grpc pode ser instanciado em uma linha de código.
+
+# Como funciona
+Só existe uma chamada rpc nesse serviço que faz um `sleep(10)` e retorna uma resposta estática.
+Ao rodar essa poc, um client em Go inicia 10 goroutinas fazendo as chamadas rpc nesse endpoint.
+Por conta da concorrência, vemos que o tempos de resposta de todas as chamadas é de 10 segundos, mostrando que ele não está lidando com as chamadas de forma síncrona.
+
+# Como rodar a aplicação
+Para subir a aplicação, usamos o docker e o processo foi simplificado com um makefile, é só clonar o repositório e rodar o comando `make start` na raiz do projeto.
+Para encerrar os containers rode um `make stop`.
